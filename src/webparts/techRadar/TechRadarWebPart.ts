@@ -118,7 +118,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
 
   private _getListData(): Promise<ISPLists> {
     console.log('Get List Data');
-    return this.context.spHttpClient.get(/*this.context.pageContext.web.absoluteUrl +*/"https://m365x141315.sharepoint.com/sites/aidenmah-Dev/Elantis-Tech-Radar" + "/_api/web/lists/GetByTitle('"+ListName+"')/Items", SPHttpClient.configurations.v1)
+    return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('"+ListName+"')/Items", SPHttpClient.configurations.v1)
         .then((response: SPHttpClientResponse) => {
             return response.json();
         });
