@@ -6,7 +6,7 @@ import {
 import { BaseClientSideWebPart } from '@microsoft/sp-webpart-base';
 import { escape } from '@microsoft/sp-lodash-subset';
 
-import styles from './TechRadarWebPart.module.scss';
+//import styles from './TechRadarWebPart.module.scss';
 import * as strings from 'TechRadarWebPartStrings';
 
 export interface ITechRadarWebPartProps {
@@ -17,11 +17,56 @@ import buildRadar from './RadarClass';
 
 import customHTML from './radar_Visuals';
 
+import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
+
+import {
+  SPHttpClient,
+  SPHttpClientResponse
+} from '@microsoft/sp-http';
+
+import {
+  Environment,
+  EnvironmentType
+} from '@microsoft/sp-core-library';
+
+export interface ITechRadarWebPartProps {
+  description: string;
+}
+
+export interface ISPLists {
+  value: ISPList[];
+}
+
+export interface ISPList {
+  Title: string; //Label Item Name
+  Quadrant: number;
+  Ring: number;
+  Active: boolean;
+  Link: string;
+  Moved: number;
+}
+
+let ListName = 'Tech-Entries';
+
+let entriesArray = [];
+
+//console.log(entriesArray)
+
 export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWebPartProps> {
 
   public render(): void {
-    
+      this._getListData()
+      .then ((response) => {
+
+        this.buildEntriesList(response.value);
+
+      });
+
       this.domElement.outerHTML = customHTML.templateHTML;
+
+      //console.log(buildEntries.logTest());
+
+      console.log(entriesArray);
       //buildRadar.buildRadar();
       buildRadar.radar_visualization({
       svg_id: "radar",
@@ -64,152 +109,38 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
       print_layout: true,
       // zoomed_quadrant: 0,
       //ENTRIES
-      entries: [{
-        quadrant: 2,
-        ring: 0,
-        label: "Live Tiles",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      },
-
-      {
-        quadrant: 2,
-        ring: 1,
-        label: "Valo",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 1,
-        label: "Teams",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 3,
-        ring: 1,
-        label: "Promapp",
-        active: false,
-        link: "../data_processing/promapp.html",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 1,
-        label: "Power Apps",
-        active: false,
-        link: "../data_processing/powerapps.html",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 1,
-        label: "Power Automate",
-        active: false,
-        link: "../data_processing/powerautomate.html",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 0,
-        label: "SP Health Checks",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 0,
-        label: "SP Migrations",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 3,
-        label: "SP 2010",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 3,
-        label: "SP 2013",
-        active: false,
-        link: "../data_processing/SP2013.html",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 0,
-        label: "Nintex Forms",
-        active: false,
-        link: "../data_processing/nintexforms.html",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 0,
-        label: "Nintex Workflow",
-        active: false,
-        link: "../data_processing/nintexworkflow.html",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 0,
-        label: "Managed Services",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 0,
-        label: "Managed Services",
-        link: "../data_processing/managedservicesq0.html",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 2,
-        label: "Microsoft 365 Assessments",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 2,
-        label: "Microsoft 365 Maturity",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 2,
-        ring: 2,
-        label: "Collabware",
-        active: false,
-        link: "https://elantis.sharepoint.com/sites/CC/SitePages/Enterprise-Content-Management.aspx",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 2,
-        label: "Nintex RPA",
-        active: false,
-        link: "../data_processing/nintexfoxtrotrpa.html",
-        moved: 0
-      }, {
-        quadrant: 0,
-        ring: 2,
-        label: "Nintex Sign",
-        active: false,
-        link: "../data_processing/nintexsign.html",
-        moved: 0
-      }, {
-        quadrant: 1,
-        ring: 1,
-        label: "MS Power Bi",
-        active: false,
-        link: "../data_processing/nintexsign.html",
-        moved: 0
-      },]
+      entries: entriesArray
       //ENTRIES
 
     });
     //this.domElement.outerHTML = customHTML.templateHTML;
+  }
+
+  private _getListData(): Promise<ISPLists> {
+    console.log('Get List Data');
+    return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('"+ListName+"')/Items", SPHttpClient.configurations.v1)
+        .then((response: SPHttpClientResponse) => {
+            return response.json();
+        });
+}
+
+  public buildEntries(): any{
+    console.log(this._getListData());  
+  }
+
+  private buildEntriesList(items: ISPList[]): void 
+   {
+    items.forEach((item: ISPList) => {
+      entriesArray.push({
+        quadrant: item.Quadrant,
+        ring: item.Ring,
+        label: item.Title,
+        active: item.Active,
+        link: item.Link,
+        moved: item.Moved
+      })
+    });
+
   }
 
   protected get dataVersion(): Version {
