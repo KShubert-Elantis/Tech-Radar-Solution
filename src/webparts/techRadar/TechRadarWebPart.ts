@@ -21,7 +21,8 @@ import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 
 import {
   SPHttpClient,
-  SPHttpClientResponse
+  SPHttpClientResponse,
+  SPHttpClientConfiguration
 } from '@microsoft/sp-http';
 
 import {
