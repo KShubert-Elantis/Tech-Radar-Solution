@@ -63,12 +63,12 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
 
       });
 
-      this.domElement.outerHTML = customHTML.templateHTML;
+      // this.domElement.outerHTML = customHTML.templateHTML;
 
       //console.log(buildEntries.logTest());
 
-      console.log(entriesArray);
-      //buildRadar.buildRadar();
+      // console.log(entriesArray);
+      // buildRadar.buildRadar();
       buildRadar.radar_visualization({
       svg_id: "radar",
       width: 810,
@@ -114,7 +114,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
       //ENTRIES
 
     });
-    //this.domElement.outerHTML = customHTML.templateHTML;
+    this.domElement.outerHTML = customHTML.templateHTML;
   }
 
   private _getListData(): Promise<ISPLists> {
