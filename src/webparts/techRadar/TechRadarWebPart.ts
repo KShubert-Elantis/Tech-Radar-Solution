@@ -56,31 +56,59 @@ let entriesArray = [];
 export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWebPartProps> {
 
   public componentDidMount() {
+    console.log('componentDidMount');
     this._getListData()
-    .then ((response) => {
+      .then((response) => {
 
-      this.buildEntriesList(response.value);
-      console.log("GetListData Initial Execution");
+        this.buildEntriesList(response.value);
 
+      });
+  }
+
+  private _getListData(): Promise<ISPLists> {
+    console.log('_getListData');
+    return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('" + ListName + "')/Items", SPHttpClient.configurations.v1)
+      .then((response: SPHttpClientResponse) => {
+        return response.json();
+      });
+  }
+
+  private buildEntriesList(items: ISPList[]): void {
+    console.log('buildEntriesList');
+    items.forEach((item: ISPList) => {
+      entriesArray.push({
+        quadrant: item.Quadrant,
+        ring: item.Ring,
+        label: item.Title,
+        active: item.Active,
+        link: item.Link,
+        moved: item.Moved
+      })
     });
+
+  }
+
+  public buildEntries(): any {
+    console.log(this._getListData());
   }
 
   public render(): void {
-      // this.domElement.outerHTML = customHTML.templateHTML;
-      // this._getListData()
-      // .then ((response) => {
+    console.log('render');
+    // this.domElement.outerHTML = customHTML.templateHTML;
+    // this._getListData()
+    // .then ((response) => {
 
-      //   this.buildEntriesList(response.value);
-      //   console.log("GetListData Initial Execution");
+    //   this.buildEntriesList(response.value);
+    //   console.log("GetListData Initial Execution");
 
-      // });
-      this.domElement.outerHTML = customHTML.templateHTML;
+    // });
+    this.domElement.outerHTML = customHTML.templateHTML;
 
-      //console.log(buildEntries.logTest());
+    //console.log(buildEntries.logTest());
 
-      console.log(entriesArray);
-      // buildRadar.buildRadar();
-      buildRadar.radar_visualization({
+    console.log(entriesArray);
+    // buildRadar.buildRadar();
+    buildRadar.radar_visualization({
       svg_id: "radar",
       width: 810,
       height: 1200,
@@ -126,33 +154,6 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
 
     });
     // this.domElement.outerHTML = customHTML.templateHTML;
-  }
-
-  private _getListData(): Promise<ISPLists> {
-    console.log('Get List Data');
-    return this.context.spHttpClient.get(this.context.pageContext.web.absoluteUrl + "/_api/web/lists/GetByTitle('"+ListName+"')/Items", SPHttpClient.configurations.v1)
-        .then((response: SPHttpClientResponse) => {
-            return response.json();
-        });
-}
-
-  public buildEntries(): any{
-    console.log(this._getListData());  
-  }
-
-  private buildEntriesList(items: ISPList[]): void 
-   {
-    items.forEach((item: ISPList) => {
-      entriesArray.push({
-        quadrant: item.Quadrant,
-        ring: item.Ring,
-        label: item.Title,
-        active: item.Active,
-        link: item.Link,
-        moved: item.Moved
-      })
-    });
-
   }
 
   protected get dataVersion(): Version {
