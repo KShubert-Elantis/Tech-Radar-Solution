@@ -114,18 +114,20 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
   }
 
   private buildEntriesList(items: ISPList[]): void {
-    items.forEach((item: ISPList) => {
-      entriesArray.push({
-        quadrant: item.Quadrant,
-        ring: item.Ring,
-        label: item.Title,
-        active: item.Active,
-        link: item.Link,
-        moved: item.Moved
-      })
-    });
+    if (entriesArray.length == 0) {
+      items.forEach((item: ISPList) => {
+        entriesArray.push({
+          quadrant: item.Quadrant,
+          ring: item.Ring,
+          label: item.Title,
+          active: item.Active,
+          link: item.Link,
+          moved: item.Moved
+        })
+      });
+      this.render();
+    }
 
-    this.render();
   }
 
   protected get dataVersion(): Version {
