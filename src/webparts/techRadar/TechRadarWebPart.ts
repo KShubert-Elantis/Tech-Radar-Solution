@@ -56,6 +56,8 @@ let entriesArray = [];
 export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWebPartProps> {
 
   public render(): void {
+      this.domElement.outerHTML = customHTML.templateHTML;
+      
       this._getListData()
       .then ((response) => {
 
@@ -114,7 +116,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
       //ENTRIES
 
     });
-    this.domElement.outerHTML = customHTML.templateHTML;
+    // this.domElement.outerHTML = customHTML.templateHTML;
   }
 
   private _getListData(): Promise<ISPLists> {
