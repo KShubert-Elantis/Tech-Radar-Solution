@@ -70,6 +70,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
   }
 
   private buildEntriesList(items: ISPList[]): void {
+    console.log('buildEntries');
     if (entriesArray.length == 0) {
       items.forEach((item: ISPList) => {
         entriesArray.push({
@@ -81,7 +82,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
           moved: item.Moved
         })        
       });
-
+      console.log('Start Radar Visualization');
       buildRadar.radar_visualization({
         svg_id: "radar",
         width: 810,
@@ -127,7 +128,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
         //ENTRIES
       });
       
-      this.render();
+      // this.render();
     }
 
   }
