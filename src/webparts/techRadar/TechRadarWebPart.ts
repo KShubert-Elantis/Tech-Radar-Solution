@@ -56,20 +56,21 @@ let entriesArray = [];
 export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWebPartProps> {
 
   public render(): void {
-      this.domElement.outerHTML = customHTML.templateHTML;
+      // this.domElement.outerHTML = customHTML.templateHTML;
       
       this._getListData()
       .then ((response) => {
 
         this.buildEntriesList(response.value);
+        console.log("GetListData Initial Execution");
 
       });
 
-      // this.domElement.outerHTML = customHTML.templateHTML;
+      this.domElement.outerHTML = customHTML.templateHTML;
 
       //console.log(buildEntries.logTest());
 
-      // console.log(entriesArray);
+      console.log(entriesArray);
       // buildRadar.buildRadar();
       buildRadar.radar_visualization({
       svg_id: "radar",
