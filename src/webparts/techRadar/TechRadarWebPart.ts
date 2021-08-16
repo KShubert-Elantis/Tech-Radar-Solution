@@ -14,7 +14,6 @@ export interface ITechRadarWebPartProps {
 }
 
 import buildRadar from './RadarClass';
-
 import customHTML from './radar_Visuals';
 
 import * as React from 'react';
@@ -57,7 +56,7 @@ let entriesArray = [];
 
 export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWebPartProps> {
 
-  public componentDidMount() {
+  public componentDidMount(): void {
     console.log('componentDidMount');
     this._getListData()
       .then((response) => {
