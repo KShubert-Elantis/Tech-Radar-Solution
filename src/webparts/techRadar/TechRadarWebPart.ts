@@ -54,51 +54,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
     this.domElement.outerHTML = customHTML.templateHTML;
     // console.log(entriesArray);
     // buildRadar.buildRadar();
-    buildRadar.radar_visualization({
-      svg_id: "radar",
-      width: 810,
-      height: 1200,
-      colors: {
-        background: "#fff",
-        grid: "#bbb",
-        inactive: "#ddd"
-      },
-      title: "Elantis Tech Radar / Core Context — 2021.05",
-      quadrants: [{
-        name: "Business Process Automation"
-      }, {
-        name: "Business Intelligence"
-      }, {
-        name: "Enterprise Content Management"
-      }, {
-        name: "Business Process Management"
-      }],
-      rings: [
-        /*{
-        name: "CONSIDER",
-        color: "#9c9b9b"
-    }, */
-        {
-          name: "MANAGE",
-          color: "#9c9b9b"
-        }, {
-          name: "STRATEGIC",
-          color: "#94A187"
-        }, {
-          name: "FUTURE GROWTH",
-          color: "#ff6600"
-        }, {
-          name: "DISTRACTION",
-          color: "#000000"
-        }
-      ],
-      print_layout: true,
-      // zoomed_quadrant: 0,
-      //ENTRIES
-      entries: entriesArray
-      //ENTRIES
-
-    });
+    
   }
 
   private _getListData(): Promise<ISPLists> {
@@ -123,8 +79,54 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
           active: item.Active,
           link: item.Link,
           moved: item.Moved
-        })
+        })        
       });
+
+      buildRadar.radar_visualization({
+        svg_id: "radar",
+        width: 810,
+        height: 1200,
+        colors: {
+          background: "#fff",
+          grid: "#bbb",
+          inactive: "#ddd"
+        },
+        title: "Elantis Tech Radar / Core Context — 2021.05",
+        quadrants: [{
+          name: "Business Process Automation"
+        }, {
+          name: "Business Intelligence"
+        }, {
+          name: "Enterprise Content Management"
+        }, {
+          name: "Business Process Management"
+        }],
+        rings: [
+          /*{
+          name: "CONSIDER",
+          color: "#9c9b9b"
+      }, */
+          {
+            name: "MANAGE",
+            color: "#9c9b9b"
+          }, {
+            name: "STRATEGIC",
+            color: "#94A187"
+          }, {
+            name: "FUTURE GROWTH",
+            color: "#ff6600"
+          }, {
+            name: "DISTRACTION",
+            color: "#000000"
+          }
+        ],
+        print_layout: true,
+        // zoomed_quadrant: 0,
+        //ENTRIES
+        entries: entriesArray
+        //ENTRIES
+      });
+      
       this.render();
     }
 
