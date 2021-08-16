@@ -45,6 +45,7 @@ let entriesArray = [];
 //console.log(entriesArray)
 export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWebPartProps> {
   public render(): void {
+    entriesArray = [];
     this._getListData()
       .then((response) => {
         this.buildEntriesList(response.value);
