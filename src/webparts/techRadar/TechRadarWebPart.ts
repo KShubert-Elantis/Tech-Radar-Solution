@@ -17,6 +17,8 @@ import buildRadar from './RadarClass';
 
 import customHTML from './radar_Visuals';
 
+import * as React from 'react';
+
 import { EdgeChromiumHighContrastSelector } from '@uifabric/styling';
 
 import {
@@ -93,7 +95,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
   }
 
   public render(): void {
-    console.log('render');
+    console.log('render new');
     // this.domElement.outerHTML = customHTML.templateHTML;
     // this._getListData()
     // .then ((response) => {
