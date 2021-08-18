@@ -35,7 +35,7 @@ export interface ISPLists {
 export interface ISPList {
   Title: string; //Label Item Name
   Quadrant: number;
-  Ring: any;
+  Ring: number;
   Active: boolean;
   Link: string;
   Moved: number;

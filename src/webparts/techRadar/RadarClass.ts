@@ -114,7 +114,7 @@ export default class sample {
         function segment(quadrant, ring) {
             var polar_min = {
                 t: quadrants[quadrant].radial_min * Math.PI,
-                r: ring === 0 ? 30 : rings[ring - 1].radius
+                r: ring == 0 ? 30 : rings[ring - 1].radius
             };
             var polar_max = {
                 t: quadrants[quadrant].radial_max * Math.PI,
