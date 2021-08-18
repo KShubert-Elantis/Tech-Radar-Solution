@@ -53,7 +53,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
       });
 
     this.domElement.outerHTML = customHTML.templateHTML;
-    // console.log(entriesArray);
+    console.log(entriesArray);
     // buildRadar.buildRadar();
     
   }
@@ -73,6 +73,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
   private buildEntriesList(items: ISPList[]): void {
     console.log('buildEntries');
     if (entriesArray.length == 0) {
+      console.log('Start Building entriesArray');
       items.forEach((item: ISPList) => {
         entriesArray.push({
           quadrant: item.Quadrant,
