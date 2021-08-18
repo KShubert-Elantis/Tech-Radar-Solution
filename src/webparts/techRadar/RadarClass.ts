@@ -282,7 +282,7 @@ export default class sample {
                 .attr("transform", translate(title_offset.x, title_offset.y))
                 .text(config.title)
                 .style("font-family", "Arial, Helvetica")
-                .style("font-size", "34");
+                .style("font-size", "30");
 
             // footer
             radar.append("text")
