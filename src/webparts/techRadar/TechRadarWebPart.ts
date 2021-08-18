@@ -93,7 +93,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
           grid: "#bbb",
           inactive: "#ddd"
         },
-        title: "Elantis Tech Radar / Core Context — 2021",
+        title: "Elantis Tech Radar / Core Context — 2021.05",
         quadrants: [{
           name: "Business Process Automation"
         }, {
@@ -109,13 +109,13 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
           color: "#9c9b9b"
       }, */
           {
-            name: "FUTURE",
+            name: "MANAGE",
             color: "#9c9b9b"
           }, {
             name: "STRATEGIC",
             color: "#94A187"
           }, {
-            name: "MANAGE",
+            name: "FUTURE GROWTH",
             color: "#ff6600"
           }, {
             name: "DISTRACTION",
