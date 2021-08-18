@@ -110,13 +110,13 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
           color: "#9c9b9b"
       }, */
           {
-            name: "MANAGE",
+            name: "FUTURE",
             color: "#9c9b9b"
           }, {
             name: "STRATEGIC",
             color: "#94A187"
           }, {
-            name: "FUTURE GROWTH",
+            name: "MANAGE",
             color: "#ff6600"
           }, {
             name: "DISTRACTION",
