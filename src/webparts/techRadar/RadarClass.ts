@@ -59,7 +59,7 @@ export default class sample {
             { radius: 400 }
         ];
 
-        const title_offset = { x: -515, y: -560 };//D = 1350
+        const title_offset = { x: -600, y: -440 };//D = 1350
 
         const footer_offset = { x: -350, y: 375 };//D = 840
 

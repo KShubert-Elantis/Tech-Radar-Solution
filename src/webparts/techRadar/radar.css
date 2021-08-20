@@ -4,7 +4,7 @@ body {
 }
 
 h3 {
-    margin-top: 425px;
+    margin-top: 325px;
 }
 /*margin-top: 525px */
 li {
@@ -13,9 +13,9 @@ li {
 
 table {
     width: 1400px;
-    margin: 0 50px 0 370px;
+    margin: 0 50px 0 50px;
+    align-content: center;
 }
-/* margin: 0 50px 0 50px; */
 
 td {
     width: 50%;
