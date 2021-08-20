@@ -3,7 +3,7 @@
   "solution": {
     "name": "tech-radar-solution-client-side-solution",
     "id": "312275bd-2bc1-4844-9f7e-9bed19ad5c48",
-    "version": "1.0.3.4",
+    "version": "1.0.3.5",
     "includeClientSideAssets": true,
     "skipFeatureDeployment": true,
     "isDomainIsolated": false,

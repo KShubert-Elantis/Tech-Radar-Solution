@@ -253,7 +253,7 @@ export default class sample {
                     .text(config.rings[i].name)
                     .attr("y", -rings[i].radius + 62)
                     .attr("text-anchor", "middle")
-                    .style("fill", "#e5e5e5")
+                    .style("fill", "#FA991C")
                     .style("font-family", "Arial, Helvetica")
                     .style("font-size", 42)
                     .style("font-weight", "bold")

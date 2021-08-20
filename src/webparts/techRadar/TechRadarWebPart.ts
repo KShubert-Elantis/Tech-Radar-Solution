@@ -92,7 +92,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
         colors: {
           background: "#E8F1EE",
           grid: "#bbb",
-          inactive: "#FA991C"
+          inactive: "#ddd"
         },
         title: "Elantis Tech Radar / Core Context — 2021",
         quadrants: [{
