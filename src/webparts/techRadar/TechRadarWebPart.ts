@@ -94,7 +94,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
           grid: "#bbb",
           inactive: "#ddd"
         },
-        title: "   Elantis Tech Radar / Core Context — 2021",
+        title: "Elantis Tech Radar / Core Context — 2021",
         quadrants: [{
           name: "Business Process Automation"
         }, {

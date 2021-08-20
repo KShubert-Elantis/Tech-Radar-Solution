@@ -4,17 +4,18 @@ body {
 }
 
 h3 {
-    margin-top: 50px;
+    margin-top: 425px;
 }
-
+/*margin-top: 525px */
 li {
     margin: 5px 50px 0 0;
 }
 
 table {
     width: 1400px;
-    margin: 0 50px 0 50px;
+    margin: 0 50px 0 370px;
 }
+/* margin: 0 50px 0 50px; */
 
 td {
     width: 50%;
