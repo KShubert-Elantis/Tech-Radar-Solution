@@ -90,7 +90,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
         width: 1450, //810
         height: 1000,
         colors: {
-          background: "#fff",
+          background: "#E8F1EE",
           grid: "#bbb",
           inactive: "#ddd"
         },
