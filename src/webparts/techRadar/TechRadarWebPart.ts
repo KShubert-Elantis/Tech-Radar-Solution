@@ -87,7 +87,7 @@ export default class TechRadarWebPart extends BaseClientSideWebPart<ITechRadarWe
       console.log('Start Radar Visualization');
       buildRadar.radar_visualization({
         svg_id: "radar",
-        width: 810,
+        width: 1450, //810
         height: 1200,
         colors: {
           background: "#fff",
