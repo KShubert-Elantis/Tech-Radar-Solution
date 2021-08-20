@@ -6,22 +6,26 @@ body {
 
 h3 {
     margin-top: 325px;
+    background-color: #E8F1EE;
 }
 /*margin-top: 525px */
 li {
     margin: 5px 50px 0 0;
+    background-color: #E8F1EE;
 }
 
 table {
     width: 1400px;
     margin: 0 50px 0 50px;
     align-content: center;
+    background-color: #E8F1EE;
 }
 
 td {
     width: 50%;
     vertical-align: top;
     padding-right: 60px;
+    background-color: #E8F1EE;
 }
 element.style {
     background-color: #E8F1EE;
